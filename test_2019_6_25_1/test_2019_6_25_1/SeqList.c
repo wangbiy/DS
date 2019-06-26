@@ -7,7 +7,7 @@
 void SeqListInit(PSeqList ps)
 {
 	assert(ps);
-	ps->arr = (DataType*)malloc(sizeof(DataType)* 10);
+	ps->arr = (DataType*)malloc((sizeof(DataType))* 10);
 	if (NULL == ps->arr)
 	{
 		assert(0);
@@ -50,7 +50,7 @@ void SeqListPushBack(PSeqList ps, DataType data)//Î²²å
 	assert(ps);
 	//ÅÐ¶ÏÊÇ·ñÔöÈÝ
 	CheckCapacity(ps);
-	ps->size = data;
+	ps->arr[ps->size] = data;
 	ps->size++;
 }
 void SeqListPopBack(PSeqList ps)//Î²É¾
