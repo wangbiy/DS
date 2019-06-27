@@ -130,3 +130,47 @@ void PrintSeqList(PSeqList ps)
 	}
 	printf("\n");
 }
+int SeqListCapacity(PSeqList ps)
+{
+	assert(ps);
+	return ps->Capacity;
+}
+int SeqListSize(PSeqList ps)
+{
+	assert(ps);
+	return ps->size;
+}
+int SeqListEmpty(PSeqList ps)
+{
+	assert(ps);
+	return 0 == ps->size;
+}
+DataType SeqListFront(PSeqList ps)
+{
+	assert(ps);
+	return ps->arr[0];
+}
+DataType SeqlistBack(PSeqList ps)
+{
+	assert(ps);
+	return ps->arr[ps->size - 1];
+}
+void SeqListRemove(PSeqList ps, DataType data)//移除第一个为data的元素
+{
+	SeqListErase(ps, SeqListFind(ps, data));
+}
+void SeqListRemoveAll(PSeqList ps, DataType data)
+{
+	assert(ps);
+	int count = 0;
+	for (int i = 0; i < ps->size; ++i)
+	{
+		if (ps->arr[i] == data)
+		{
+			count++;
+		}
+		else
+			ps->arr[i - count] = ps->arr[i];
+	}
+	ps->size -= count;
+}
