@@ -7,10 +7,9 @@ void menu()
 	printf("**  1.尾部插入             2.尾部删除               **\n");
 	printf("**  3.头部插入             4.头部删除               **\n");
 	printf("**  5.任意位置插入         6.任意位置删除           **\n");
-	printf("**  7.查找                 8.统计节点个数           **\n");
-	printf("**  9.返回第一个值         10.返回最后一个值        **\n");
-	printf("**  11.显示                12.释放                  **\n");
-	printf("**  13.置空                                         **\n");
+	printf("**  7.统计节点个数         8.返回第一个值           **\n");
+	printf("**  9.返回最后一个值       10.显示                  **\n");
+	printf("**  11释放                 12.置空                  **\n");
 }
 void test()
 {
@@ -19,6 +18,8 @@ void test()
 	int input = 0;
 	Node *pos;
 	SDataType data;
+	SDataType val;
+	int count = 0;
 	do
 	{
 		menu();
@@ -43,38 +44,34 @@ void test()
 			SListPopFront(&pl);
 			break;
 		case 5:
-			printf("请输入要插入的位置:");
-			scanf("%d", &pos);
-			printf("请输入要插入的数:");
+			printf("请输入要插入哪个数后面:");
+			scanf("%d", &val);
+			printf("请输入插入的数:");
 			scanf("%d", &data);
-			SListInsertAfter(&pos, data);
+			SListInsertAfter(SListFind(&pl, val),data);
 			break;
 		case 6:
-			printf("请输入要删除的数的位置:");
-			scanf("%d", &pos);
-			SListErase(&pl, &pos);
+			printf("请输入要删除的数:");
+			scanf("%d", &val);
+			SListErase(&pl, SListFind(&pl, val));
 			break;
 		case 7:
-			printf("请输入要查找的数:");
-			scanf("%d", &data);
-			SListFind(&pl, data);
+			count=SListSize(&pl);
+			printf("节点个数为:%d\n", count);
 			break;
 		case 8:
-			SListSize(&pl);
-			break;
-		case 9:
 			SListFront(&pl);
 			break;
-		case 10:
+		case 9:
 			SListBack(&pl);
 			break;
-		case 11:
+		case 10:
 			PrintSList(&pl);
 			break;
-		case 12:
+		case 11:
 			SListDestroy(&pl);
 			break;
-		case 13:
+		case 12:
 			SListEmpty(&pl);
 			break;
 		}
