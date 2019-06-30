@@ -9,14 +9,13 @@ void menu()
 	printf("**  5.任意位置插入         6.任意位置删除           **\n");
 	printf("**  7.统计节点个数         8.返回第一个值           **\n");
 	printf("**  9.返回最后一个值       10.显示                  **\n");
-	printf("**  11释放                 12.置空                  **\n");
+	printf("**  11.释放                12.置空                  **\n");
 }
 void test()
 {
 	SList pl;
 	SListInit(&pl);
 	int input = 0;
-	Node *pos;
 	SDataType data;
 	SDataType val;
 	int count = 0;

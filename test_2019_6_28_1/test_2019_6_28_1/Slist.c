@@ -165,7 +165,7 @@ void PrintSList(SList *pl)
 	Pcur = pl->PHead;
 	while (Pcur)
 	{
-		printf("%d------->", Pcur->_data);
+		printf("%d------>", Pcur->_data);
 		Pcur = Pcur->_PNext;
 	}
 	printf("NULL\n");
