@@ -220,7 +220,7 @@ Node* ReverseSList(SList *pl)
 	Node *cur = NULL;
 	cur = pl->PHead;
 	assert(pl);
-	while (cur)
+	while (cur!=NULL)
 	{
 		Node *next = cur->_PNext;
 		cur->_PNext = ResultHead;
@@ -244,8 +244,8 @@ Node* removeElements(SList *pl, SDataType val)//删除所有为val的值
 		else
 		{
 			pre = cur;
-			cur = cur->_PNext;
 		}
+		cur = cur->_PNext;
 	}
 	if (pl->PHead->_data == val)
 	{
@@ -253,4 +253,30 @@ Node* removeElements(SList *pl, SDataType val)//删除所有为val的值
 	}
 	else
 		return pl->PHead;
+}
+Node *removeElement2(SList *pl, SDataType val)//删除所有为val的结点第二种方法
+//遇到不等于val的就尾插到另一个链表中
+{
+	Node *ResultHead = NULL;//另一链表
+	Node *cur = pl->PHead;
+	Node *last = NULL;
+	while (cur != NULL)
+	{
+		Node* next = cur->_PNext;
+		if (cur->_data != val)
+		{
+			if (ResultHead == NULL)
+			{
+				ResultHead = cur;
+			}
+			else
+			{
+				cur->_PNext = NULL;
+				last->_PNext = cur;
+			}
+			last = cur;
+		}
+		cur = next;
+	}
+	return ResultHead;
 }

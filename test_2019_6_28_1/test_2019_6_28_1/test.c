@@ -11,6 +11,7 @@ void menu()
 	printf("**  9.返回最后一个值       10.显示                  **\n");
 	printf("**  11.释放                12.置空                  **\n");
 	printf("**  13.逆置                14.删除指定的所有值      **\n");
+	printf("**  15.删除指定的所有值第二种方法                   **\n");
 }
 void test()
 {
@@ -80,8 +81,14 @@ void test()
 		case 14:
 			printf("请输入要删除的值:");
 			scanf("%d", &data);
+			removeElement2(&pl, data);//删除所有为data的值
+			break;
+		case 15:
+			printf("请输入要删除的值:");
+			scanf("%d", &data);
 			removeElements(&pl, data);//删除所有为data的值
 			break;
+
 		}
 	} while (input);
 }
