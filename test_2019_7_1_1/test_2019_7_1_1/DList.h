@@ -1,0 +1,18 @@
+# pragma once
+typedef int DLDataType;
+typedef struct DListNode//带头双向循环链表
+{
+	struct DListNode *_pPre;
+	struct DListNode *_pNext;
+	DLDataType _data;
+}DLNode;
+void DListInit(DLNode**PHead);
+void DListPushBack(DLNode *PHead, DLDataType data);//尾插
+void DListPopBack(DLNode *PHead);//尾删
+void DListPushFront(DLNode *PHead, DLDataType data);//头插
+void DListPopFront(DLNode *PHead);//头删
+void DListInsert(DLNode *PHead, DLDataType data);//任意位置插入
+void DListErase(DLNode *PHead);//任意位置删除
+void PrintDList(DLNode *PHead);//打印
+
+
