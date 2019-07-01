@@ -10,6 +10,7 @@ void menu()
 	printf("**  7.统计节点个数         8.返回第一个值           **\n");
 	printf("**  9.返回最后一个值       10.显示                  **\n");
 	printf("**  11.释放                12.置空                  **\n");
+	printf("**  13.逆置                                         **\n");
 }
 void test()
 {
@@ -73,26 +74,29 @@ void test()
 		case 12:
 			SListEmpty(&pl);
 			break;
+		case 13:
+			ReverseSList(&pl);
+			break;
 		}
 	} while (input);
 }
-void test2()
-{
-	Node *PH=NULL;
-	SDataType data = 0;
-	Node nodeHead;
-	nodeHead._PNext = NULL;
-	/*printf("请输入要插入的数:");
-	scanf("%d", &data);*/
-	SListPushBack2(&PH, 1);
-	/*printf("请输入要插入的数:");
-	scanf("%d", &data);*/
-	SListPushFront2(&nodeHead, 2);
-}
+//void test2()
+//{
+//	Node *PH=NULL;
+//	SDataType data = 0;
+//	Node nodeHead;
+//	nodeHead._PNext = NULL;
+//	/*printf("请输入要插入的数:");
+//	scanf("%d", &data);*/
+//	SListPushBack2(&PH, 1);
+//	/*printf("请输入要插入的数:");
+//	scanf("%d", &data);*/
+//	SListPushFront2(&nodeHead, 2);
+//}
 int main()
 {
-	/*test();*/
-	test2();
+	test();
+	/*test2();*/
 	system("pause");
 	return 0;
 }

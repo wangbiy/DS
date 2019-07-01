@@ -162,11 +162,11 @@ void PrintSList(SList *pl)
 {
 	Node *Pcur = NULL;
 	assert(pl);
-	Pcur = pl->PHead;
-	while (Pcur)
+	/*Pcur = pl->PHead;*/
+	for (Pcur = pl->PHead; Pcur != NULL;Pcur=Pcur->_PNext)
 	{
 		printf("%d------>", Pcur->_data);
-		Pcur = Pcur->_PNext;
+		/*Pcur = Pcur->_PNext;*/
 	}
 	printf("NULL\n");
 }
@@ -188,29 +188,44 @@ int SListEmpty(SList *pl)
 	assert(pl);
 	return NULL == pl->PHead;
 }
-void SListPushFront2(Node *NodeHead, SDataType data)//带头节点的头插
+//void SListPushFront2(Node *NodeHead, SDataType data)//带头节点的头插
+//{
+//	assert(NodeHead);
+//	Node *PNewNode = BuySListNode(data);
+//	PNewNode->_PNext = NodeHead->_PNext;
+//	NodeHead->_PNext = PNewNode;
+//}
+//void SListPushBack2(Node**PHead, SDataType data)//不用链表结构的尾插，不带头结点
+//{
+//	assert(PHead);
+//	Node *PNewNode = BuySListNode(data);
+//	if (NULL == *PHead)
+//	{
+//		*PHead = PNewNode;
+//	}
+//	else
+//	{
+//		Node *cur = NULL;
+//		cur=*PHead;
+//		while (cur->_PNext)
+//		{
+//			cur = cur->_PNext;
+//		}
+//		cur->_PNext = PNewNode;
+//	}
+//}
+Node* ReverseSList(SList *pl)
 {
-	assert(NodeHead);
-	Node *PNewNode = BuySListNode(data);
-	PNewNode->_PNext = NodeHead->_PNext;
-	NodeHead->_PNext = PNewNode;
-}
-void SListPushBack2(Node**PHead, SDataType data)//不用链表结构的尾插，不带头结点
-{
-	assert(PHead);
-	Node *PNewNode = BuySListNode(data);
-	if (NULL == *PHead)
+	Node* ResultHead = NULL;//构造一个结果链表
+	Node *cur = NULL;
+	cur = pl->PHead;
+	assert(pl);
+	while (cur)
 	{
-		*PHead = PNewNode;
+		Node *next = cur->_PNext;
+		cur->_PNext = ResultHead;
+		ResultHead = cur;
+		cur = next;//cur->pNext发生了改变，故用next存着
 	}
-	else
-	{
-		Node *cur = NULL;
-		cur=*PHead;
-		while (cur->_PNext)
-		{
-			cur = cur->_PNext;
-		}
-		cur->_PNext = PNewNode;
-	}
+	return ResultHead;
 }

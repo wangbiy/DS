@@ -22,8 +22,9 @@ Node* SListBack(SList *pl);//必须保证有尾结点，获取最后一个节点
 void PrintSList(SList *pl);
 void SListDestroy(SList *pl);
 int SListEmpty(SList *pl);
-void SListPushFront2(Node *NodeHead, SDataType data);//带头节点的头插
-void SListPushBack2(Node**PHead, SDataType data);//不用链表结构的尾插，不带头结点
+//void SListPushFront2(Node *NodeHead, SDataType data);//带头节点的头插
+//void SListPushBack2(Node**PHead, SDataType data);//不用链表结构的尾插，不带头结点
+Node* ReverseSList(SList *pl);
 
 
 
