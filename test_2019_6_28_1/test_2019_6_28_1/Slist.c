@@ -229,3 +229,28 @@ Node* ReverseSList(SList *pl)
 	}
 	return ResultHead;
 }
+Node* removeElements(SList *pl, SDataType val)//删除所有为val的值
+{
+	Node *pre = pl->PHead;//前驱结点
+	Node *cur = pl->PHead->_PNext;
+	if (pl->PHead == NULL)
+		return NULL;
+	while (cur != NULL)
+	{
+		if (cur->_data == val)
+		{
+			pre->_PNext = cur->_PNext;
+		}
+		else
+		{
+			pre = cur;
+			cur = cur->_PNext;
+		}
+	}
+	if (pl->PHead->_data == val)
+	{
+		return pl->PHead->_PNext;
+	}
+	else
+		return pl->PHead;
+}

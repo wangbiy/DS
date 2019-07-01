@@ -25,6 +25,7 @@ int SListEmpty(SList *pl);
 //void SListPushFront2(Node *NodeHead, SDataType data);//带头节点的头插
 //void SListPushBack2(Node**PHead, SDataType data);//不用链表结构的尾插，不带头结点
 Node* ReverseSList(SList *pl);
+Node* removeElements(SList *pl, SDataType val);//删除所有为val的值
 
 
 
