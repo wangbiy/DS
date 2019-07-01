@@ -188,3 +188,29 @@ int SListEmpty(SList *pl)
 	assert(pl);
 	return NULL == pl->PHead;
 }
+void SListPushFront2(Node *NodeHead, SDataType data)//带头节点的头插
+{
+	assert(NodeHead);
+	Node *PNewNode = BuySListNode(data);
+	PNewNode->_PNext = NodeHead->_PNext;
+	NodeHead->_PNext = PNewNode;
+}
+void SListPushBack2(Node**PHead, SDataType data)//不用链表结构的尾插，不带头结点
+{
+	assert(PHead);
+	Node *PNewNode = BuySListNode(data);
+	if (NULL == *PHead)
+	{
+		*PHead = PNewNode;
+	}
+	else
+	{
+		Node *cur = NULL;
+		cur=*PHead;
+		while (cur->_PNext)
+		{
+			cur = cur->_PNext;
+		}
+		cur->_PNext = PNewNode;
+	}
+}

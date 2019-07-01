@@ -76,9 +76,23 @@ void test()
 		}
 	} while (input);
 }
+void test2()
+{
+	Node *PH=NULL;
+	SDataType data = 0;
+	Node nodeHead;
+	nodeHead._PNext = NULL;
+	/*printf("请输入要插入的数:");
+	scanf("%d", &data);*/
+	SListPushBack2(&PH, 1);
+	/*printf("请输入要插入的数:");
+	scanf("%d", &data);*/
+	SListPushFront2(&nodeHead, 2);
+}
 int main()
 {
-	test();
+	/*test();*/
+	test2();
 	system("pause");
 	return 0;
 }
