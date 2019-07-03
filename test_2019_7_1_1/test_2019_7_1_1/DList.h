@@ -14,5 +14,6 @@ void DListPopFront(DLNode *PHead);//头删
 void DListInsert(DLNode *PHead, DLDataType data);//任意位置插入
 void DListErase(DLNode *PHead);//任意位置删除
 void PrintDList(DLNode *PHead);//打印
+void DListDestroy(DLNode *PHead);//销毁
 
 

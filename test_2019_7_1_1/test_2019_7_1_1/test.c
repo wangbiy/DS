@@ -16,7 +16,7 @@ void test()
 {
 	int input = 0;
 	DLDataType data=0;
-	DLNode *PH = NULL;
+	DLNode *PH=NULL;
 	DListInit(&PH);
 	do
 	{
