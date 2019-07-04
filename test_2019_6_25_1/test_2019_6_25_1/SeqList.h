@@ -1,11 +1,11 @@
-
+#pragma once
 typedef int DataType;
 typedef struct SeqList
 {
 	DataType *arr;
 	int size;//有效元素个数
 	int Capacity;//容量
-}SeqList,*PSeqList;
+}SeqList, *PSeqList;
 void SeqListInit(PSeqList ps);
 void SeqListDestroy(PSeqList ps);
 void SeqListPushBack(PSeqList ps, DataType data);
