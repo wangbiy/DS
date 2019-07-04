@@ -17,6 +17,7 @@ void test()
 	int input = 0;
 	DLDataType data=0;
 	DLNode *PH=NULL;
+	DLDataType val = 0;
 	DListInit(&PH);
 	do
 	{
@@ -31,14 +32,27 @@ void test()
 			DListPushBack(PH, data);
 			break;
 		case 2:
+			DListPopBack(PH);
 			break;
 		case 3:
+			printf("请输入要插入的数:");
+			scanf("%d", &data);
+			DListPushFront(PH, data);
 			break;
 		case 4:
+			DListPopFront(PH);
 			break;
 		case 5:
+			printf("请输入要插入的位置:");
+			scanf("%d", &val);
+			printf("请输入要插入的值:");
+			scanf("%d", &data);
+			DListInsertFront(DListFind(PH, val), data);
 			break;
 		case 6:
+			printf("请输入要删除的数的位置:");
+			scanf("%d", &val);
+			DListErase(DListFind(PH, val));
 			break;
 		case 7:
 			break;
@@ -46,6 +60,13 @@ void test()
 			break;
 		case 9:
 			PrintDList(PH);
+			break;
+		case 10:
+			break;
+		case 11:
+			DListDestroy(&PH);
+			break;
+		case 12:
 			break;
 
 		}

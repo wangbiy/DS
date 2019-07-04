@@ -11,9 +11,10 @@ void DListPushBack(DLNode *PHead, DLDataType data);//尾插
 void DListPopBack(DLNode *PHead);//尾删
 void DListPushFront(DLNode *PHead, DLDataType data);//头插
 void DListPopFront(DLNode *PHead);//头删
-void DListInsert(DLNode *PHead, DLDataType data);//任意位置插入
-void DListErase(DLNode *PHead);//任意位置删除
+void DListInsertFront(DLNode *pos, DLDataType data);//任意位置插入
+void DListErase(DLNode *pos);//任意位置删除
 void PrintDList(DLNode *PHead);//打印
 void DListDestroy(DLNode *PHead);//销毁
+DLNode* DListFind(DLNode* PHead, DLDataType data);//查找
 
 
