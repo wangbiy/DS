@@ -21,7 +21,7 @@ Node* mergeTwoList(Node *s1, Node *s2)
 		if (c1->data <= c2->data)
 		{
 			Node *next = c1->next;
-			//将c1尾插到ResuleHead
+			//将c1尾插到ResultHead
 			c1->next = NULL;
 			if (ResultHead == NULL)
 			{
@@ -37,7 +37,7 @@ Node* mergeTwoList(Node *s1, Node *s2)
 		else
 		{
 			Node *next = c2->next;
-			//将c1尾插到ResuleHead
+			//将c1尾插到ResultHead
 			c2->next = NULL;
 			if (ResultHead == NULL)
 			{
