@@ -29,7 +29,7 @@ BTNode* createBinTree(char* arr, int size)
 	int index = 0;
 	return _createBinTree(arr, size, &index);
 }
-void DestroyBinTree(BTNode** root)//后序遍历
+void DestroyBinTree(BTNode** root)//后序遍历销毁
 {
 	assert(*root);
 	if (*root)
