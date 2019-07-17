@@ -24,3 +24,4 @@ BTNode* find(BTNode* root, char v);//查找值为v的结点，返回节点地址
 #include <queue>
 void levelOrderTraversal(BTNode* root);//层序遍历
 bool isCompleteTree(BTNode* root);//判断完全二叉树
+BTNode* copyBinTree(BTNode* root);//拷贝二叉树

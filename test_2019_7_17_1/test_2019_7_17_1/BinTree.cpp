@@ -192,3 +192,15 @@ bool isCompleteTree(BTNode* root)//判断完全二叉树
 	}
 	return true;
 }
+BTNode* copyBinTree(BTNode* root)
+{
+	BTNode* NewNode = NULL;//定义一个新的二叉树
+	if (root)
+	{
+		//先拷贝根结点
+		NewNode = BuyBinTreeNode(root->val);
+		NewNode->left = copyBinTree(root->left);
+		NewNode->right = copyBinTree(root->right);
+	}
+	return NewNode;
+}
