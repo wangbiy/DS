@@ -49,7 +49,7 @@ char * tree2str(Node* t)
 	ret[0] = '\0';
 	return _tree2str(t,ret);
 }
-Node* createTree(int data)
+Node* createTree(char data)
 {
 	Node* root = NULL;
 	root = (Node*)malloc(sizeof(Node));
