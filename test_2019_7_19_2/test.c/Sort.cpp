@@ -249,6 +249,7 @@ void bubbleSort(int a[], int size)
 {
 	for (int i = 0; i < size; i++)
 	{
+		int flag = 1;
 		for (int j = 0; j < size - i - 1; j++)
 		{
 			if (a[j] >= a[j + 1])
@@ -256,8 +257,11 @@ void bubbleSort(int a[], int size)
 				int t = a[j + 1];
 				a[j + 1] = a[j];
 				a[j] = t;
+				flag = 0;
 			}
 		}
+		if (flag == 1)
+			break;
 	}
 }
 void MergeData(int a[], int left, int mid, int right, int* tmp)
@@ -300,6 +304,43 @@ void MergeSort(int a[], int size)
 		return;
 	_MergeSort(a,  0, size - 1,tmp);
 	free(tmp);
+}
+void countSort(int a[], int size)
+{
+	//找出数据范围
+	int minValue = a[0];
+	int maxValue = a[0];
+	for (int i = 1; i < size; ++i)
+	{
+		if (a[i]>maxValue)
+		{
+			maxValue = a[i];
+		}
+		if (a[i] < minValue)
+		{
+			minValue = a[i];
+		}
+
+	}
+	int range = maxValue - minValue + 1;
+	int* temp = (int*)malloc(range*sizeof(int));
+	assert(temp);
+	memset(temp, 0, range*sizeof(int));
+	for (int i = 0; i < size; ++i)
+	{
+		temp[a[i] - minValue]++;
+	}
+	//对数据进行回收
+	int index = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		int count = temp[i];
+		while (count--)
+		{
+			a[index++] = i + minValue;
+		}
+	}
+	free(temp);
 }
 
 

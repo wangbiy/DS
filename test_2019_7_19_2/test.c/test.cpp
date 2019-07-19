@@ -43,6 +43,10 @@ int main()
 	MergeSort(a, size);
 	print(a, size);
 	printf("\n");
+	printf("¼ÆÊýÅÅÐò:");
+	countSort(a, size);
+	print(a, size);
+	printf("\n");
 	system("pause");
 	return 0;
 }
