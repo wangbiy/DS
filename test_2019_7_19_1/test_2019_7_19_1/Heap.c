@@ -57,11 +57,13 @@ void createHeap2(int a[], int size)//½¨´ó¶Ñ
 }
 void HeapInit(Heap* heap, int a[], int size)//¶ÑµÄ³õÊ¼»¯
 {
+	heap->a = (int*)malloc(sizeof(int)*size);
+	heap->size = size;
+	heap->capacity = size;
 	for (int i = 0; i < size; ++i)
 	{
 		heap->a[i] = a[i];
 	}
-	heap->size = size;
 	createHeap1(heap->a, heap->size);//½¨Ð¡¶Ñ
 }
 void AdjustUp(int a[], int index)//ÒªÊµÏÖ¶ÑµÄ²åÈë£¬½«ÔªËØ²åÈëÊý×éµÄÎ²ÉÏ£¬ÏòÉÏµ÷Õû
@@ -82,20 +84,50 @@ void AdjustUp(int a[], int index)//ÒªÊµÏÖ¶ÑµÄ²åÈë£¬½«ÔªËØ²åÈëÊý×éµÄÎ²ÉÏ£¬ÏòÉÏµ÷Õ
 		index = parent;
 	}
 }
+void checkCapacity(Heap* heap)
+{
+	if (heap->size == heap->capacity)
+	{
+		int newCapacity = 2 * (heap->capacity);
+		int* tmp = (int*)malloc(sizeof(int)*newCapacity);
+		memcpy(tmp, heap->a, sizeof(int)*(heap->size));
+		free(heap->a);
+		heap->a = tmp;
+		heap->capacity = newCapacity;
+	}
+}
 void HeapPush(Heap* heap, int val)//²åÈëµ½Î²ÉÏ
 {
+	checkCapacity(heap);
 	heap->a[heap->size++] = val;
 	AdjustUp(heap->a, heap->size - 1);
 }
 void HeapPop(Heap* heap)//É¾³ý
 {
-	assert(heap->size>0);
+	assert(heap);
 	heap->a[0] = heap->a[heap->size - 1];//½«¸ùÓë×îºóÒ»¸ö½áµã½»»»
 	heap->size--;//É¾³ý×îºóÒ»¸öÊý¾Ý
 	heapify1(heap->a, heap->size, 0);//ÏòÏÂµ÷Õû
 }
 int HeapTop(Heap* heap)//·µ»Ø¶Ñ¶¥ÔªËØ
 {
-	assert(heap->size>0);
+	assert(heap);
 	return heap->a[0];
+}
+int HeapSize(Heap* heap)
+{
+	return heap->size;
+}
+int HeapEmpty(Heap* heap)
+{
+	return 0 == heap->size;
+}
+void HeapDestroy(Heap* heap)
+{
+	if (heap->a)
+	{
+		free(heap->a);
+		heap->capacity = 0;
+		heap->size = 0;
+	}
 }

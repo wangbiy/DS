@@ -8,6 +8,8 @@ void test()
 	HeapPush(&heap, 9);//插入9到堆上
 	HeapPop(&heap);//删除堆顶元素
 	int ret=HeapTop(&heap);//返回堆顶元素
+	int count = HeapSize(&heap);
+	HeapDestroy(&heap);
 }
 int main()
 {
