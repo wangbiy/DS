@@ -280,6 +280,30 @@ bool Mirror(BTNode* s, BTNode* t)// 判断二叉树的镜像
 		return false;
 	return s->_data == t->_data && Mirror(s->_pLeft, t->_pRight) && Mirror(s->_pRight, t->_pLeft);
 }
+bool isCompleteTree(BTNode* root)//判断完全二叉树
+{
+	if (root == NULL)
+		return true;
+	std::queue<BTNode*> q;
+	q.push(root);
+	while (true)
+	{
+		BTNode* front = q.front();
+		q.pop();
+		if (front == NULL)
+			break;
+		q.push(front->_pLeft);
+		q.push(front->_pRight);
+	}
+	while (!q.empty())
+	{
+		BTNode* front = q.front();
+		q.pop();
+		if (front != NULL)
+			return false;
+	}
+	return true;
+}
 void test()
 {
 	BTNode* a = NULL;
@@ -350,4 +374,9 @@ void test()
 		printf("a和t互为镜像!\n");
 	if (result == false)
 		printf("a和t不互为镜像!\n");
+	result=isCompleteTree(a);
+	if (result == true)
+		printf("是完全二叉树!\n");
+	if (result == false)
+		printf("不是完全二叉树!\n");
 }
