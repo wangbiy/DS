@@ -214,20 +214,21 @@ int SListEmpty(SList *pl)
 //		cur->_PNext = PNewNode;
 //	}
 //}
-Node* ReverseSList(SList *pl)
+Node* ReverseSList(SList *pl)//逆置
 {
-	Node* ResultHead = NULL;//构造一个结果链表
-	Node *cur = NULL;
-	cur = pl->PHead;
-	assert(pl);
-	while (cur!=NULL)
-	{
-		Node *next = cur->_PNext;
-		cur->_PNext = ResultHead;
-		ResultHead = cur;
-		cur = next;//cur->pNext发生了改变，故用next存着
+	Node* p = NULL;
+	Node* next = NULL;
+	if (pl->PHead == NULL)
+		return NULL;
+	p = pl->PHead->_PNext;
+	pl->PHead->_PNext = NULL;//将第一个结点后的结点置空
+	while (p != NULL) {
+		next = p->_PNext;
+		p->_PNext = pl->PHead;
+		pl->PHead = p;
+		p = next;
 	}
-	return ResultHead;
+	return pl->PHead;
 }
 Node* removeElements(SList *pl, SDataType val)//删除所有为val的值
 {
