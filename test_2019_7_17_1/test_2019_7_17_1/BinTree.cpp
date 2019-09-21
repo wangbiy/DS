@@ -7,7 +7,7 @@ BTNode* BuyBinTreeNode(BTDataType data)
 	pNewNode->_pRight = NULL;
 	return pNewNode;
 }
-BTNode* _CreateBinTree(BTDataType* array, int size, int* index)//¸ù¾İÇ°Ğò±éÀú´´½¨¶ş²æÊ÷
+BTNode* _CreateBinTree(BTDataType* array, int size, int* index)//æ ¹æ®å‰åºéå†åˆ›å»ºäºŒå‰æ ‘
 {
 	BTNode* root = NULL;
 	if (*index < size && array[*index] != '#')
@@ -20,23 +20,23 @@ BTNode* _CreateBinTree(BTDataType* array, int size, int* index)//¸ù¾İÇ°Ğò±éÀú´´½
 	}
 	return root;
 }
-BTNode* CreateBinTree(BTDataType* array, int size)//´´½¨¶ş²æÊ÷
+BTNode* CreateBinTree(BTDataType* array, int size)//åˆ›å»ºäºŒå‰æ ‘
 {
 	int index = 0;
 	return _CreateBinTree(array, size, &index);
 }
-BTNode* CopyBinTree(BTNode* pRoot)//¿½±´¶ş²æÊ÷
+BTNode* CopyBinTree(BTNode* pRoot)//æ‹·è´äºŒå‰æ ‘
 {
-	BTNode* pNewRoot = NULL;//¶¨ÒåÒ»¸öĞÂµÄ¶ş²æÊ÷
+	BTNode* pNewRoot = NULL;//å®šä¹‰ä¸€ä¸ªæ–°çš„äºŒå‰æ ‘
 	if (pRoot)
 	{
-		pNewRoot = BuyBinTreeNode(pRoot->_data);//ÏÈ¿½±´¸ù½áµã
-		pNewRoot->_pLeft = CopyBinTree(pRoot->_pLeft);//¿½±´×ó×ÓÊ÷
-		pNewRoot->_pRight = CopyBinTree(pRoot->_pRight);//¿½±´ÓÒ×ÓÊ÷
+		pNewRoot = BuyBinTreeNode(pRoot->_data);//å…ˆæ‹·è´æ ¹ç»“ç‚¹
+		pNewRoot->_pLeft = CopyBinTree(pRoot->_pLeft);//æ‹·è´å·¦å­æ ‘
+		pNewRoot->_pRight = CopyBinTree(pRoot->_pRight);//æ‹·è´å³å­æ ‘
 	}
 	return pNewRoot;
 }
-void DestroyBinTree(BTNode** pRoot)//Ïú»Ù¶ş²æÊ÷,ÀûÓÃºóĞò±éÀú,ÒòÎª¸Ä±äÁËÖ¸ÕëÖ¸Ïò£¬ËùÒÔÀûÓÃ¶ş¼¶Ö¸Õë
+void DestroyBinTree(BTNode** pRoot)//é”€æ¯äºŒå‰æ ‘,åˆ©ç”¨ååºéå†,å› ä¸ºæ”¹å˜äº†æŒ‡é’ˆæŒ‡å‘ï¼Œæ‰€ä»¥åˆ©ç”¨äºŒçº§æŒ‡é’ˆ
 {
 	assert(*pRoot);
 	if (*pRoot)
@@ -44,35 +44,35 @@ void DestroyBinTree(BTNode** pRoot)//Ïú»Ù¶ş²æÊ÷,ÀûÓÃºóĞò±éÀú,ÒòÎª¸Ä±äÁËÖ¸ÕëÖ¸Ïò£
 		DestroyBinTree(&(*pRoot)->_pLeft);
 		DestroyBinTree(&(*pRoot)->_pRight);
 		free(*pRoot);
-		*pRoot = NULL;//¸Ä±äÁËÖ¸ÕëÖ¸Ïò
+		*pRoot = NULL;//æ”¹å˜äº†æŒ‡é’ˆæŒ‡å‘
 	}
 }
-void PreOrder(BTNode* pRoot)//Ç°Ğò±éÀúµİ¹é
+void PreOrder(BTNode* pRoot)//å‰åºéå†é€’å½’
 {
 	if (pRoot == NULL)
 		return;
-	printf("%c ", pRoot->_data);//¸ù
-	PreOrder(pRoot->_pLeft);//×ó×ÓÊ÷
-	PreOrder(pRoot->_pRight);//ÓÒ×ÓÊ÷
+	printf("%c ", pRoot->_data);//æ ¹
+	PreOrder(pRoot->_pLeft);//å·¦å­æ ‘
+	PreOrder(pRoot->_pRight);//å³å­æ ‘
 }
-void InOrder(BTNode* pRoot) //ÖĞĞò±éÀúµİ¹é
+void InOrder(BTNode* pRoot) //ä¸­åºéå†é€’å½’
 {
 	if (pRoot == NULL)
 		return;
-	InOrder(pRoot->_pLeft);//×ó×ÓÊ÷
-	printf("%c ", pRoot->_data);//¸ù
-	InOrder(pRoot->_pRight);//ÓÒ×ÓÊ÷
+	InOrder(pRoot->_pLeft);//å·¦å­æ ‘
+	printf("%c ", pRoot->_data);//æ ¹
+	InOrder(pRoot->_pRight);//å³å­æ ‘
 }
-void PostOrder(BTNode* pRoot)//ºóĞò±éÀúµİ¹é
+void PostOrder(BTNode* pRoot)//ååºéå†é€’å½’
 {
 	if (pRoot == NULL)
 		return;
-	PostOrder(pRoot->_pLeft);//×ó×ÓÊ÷
-	PostOrder(pRoot->_pRight);//ÓÒ×ÓÊ÷
-	printf("%c ", pRoot->_data);//¸ù
+	PostOrder(pRoot->_pLeft);//å·¦å­æ ‘
+	PostOrder(pRoot->_pRight);//å³å­æ ‘
+	printf("%c ", pRoot->_data);//æ ¹
 }
 #include<stack>
-void PreOrderNor(BTNode* pRoot)//Ç°Ğò±éÀú·Çµİ¹é
+void PreOrderNor(BTNode* pRoot)//å‰åºéå†éé€’å½’
 {
 	BTNode* cur = pRoot;
 	std::stack<BTNode*> st;
@@ -89,7 +89,7 @@ void PreOrderNor(BTNode* pRoot)//Ç°Ğò±éÀú·Çµİ¹é
 		cur = top->_pRight;
 	}
 }
-void InOrderNor(BTNode* pRoot)//ÖĞĞò±éÀú·Çµİ¹é
+void InOrderNor(BTNode* pRoot)//ä¸­åºéå†éé€’å½’
 {
 	BTNode* cur = pRoot;
 	std::stack<BTNode*> st;
@@ -107,10 +107,10 @@ void InOrderNor(BTNode* pRoot)//ÖĞĞò±éÀú·Çµİ¹é
 	}
 
 }
-void PostOrderNor(BTNode* pRoot)//ºóĞò±éÀú·Çµİ¹é
+void PostOrderNor(BTNode* pRoot)//ååºéå†éé€’å½’
 {
 	BTNode* cur = pRoot;
-	BTNode* last = NULL;//ÉÏÒ»´Î×óÓÒ×ÓÊ÷¶¼±»±éÀú¹ıµÄ½áµã
+	BTNode* last = NULL;//ä¸Šä¸€æ¬¡å·¦å³å­æ ‘éƒ½è¢«éå†è¿‡çš„ç»“ç‚¹
 	std::stack<BTNode*> st;
 	while (cur != NULL || !st.empty())
 	{
@@ -133,7 +133,7 @@ void PostOrderNor(BTNode* pRoot)//ºóĞò±éÀú·Çµİ¹é
 	}
 }
 #include <queue>
-void LevelOrder(BTNode* pRoot)//²ãĞò±éÀú
+void LevelOrder(BTNode* pRoot)//å±‚åºéå†
 {
 	if (NULL == pRoot)
 		return;
@@ -154,7 +154,7 @@ void LevelOrder(BTNode* pRoot)//²ãĞò±éÀú
 		}
 	}
 }
-int GetNodeCount1(BTNode* pRoot)//»ñÈ¡¶ş²æÊ÷ÖĞ½ÚµãµÄ¸öÊı·½·¨1
+int GetNodeCount1(BTNode* pRoot)//è·å–äºŒå‰æ ‘ä¸­èŠ‚ç‚¹çš„ä¸ªæ•°æ–¹æ³•1
 {
 	if (pRoot == NULL)
 		return 0;
@@ -163,7 +163,7 @@ int GetNodeCount1(BTNode* pRoot)//»ñÈ¡¶ş²æÊ÷ÖĞ½ÚµãµÄ¸öÊı·½·¨1
 	return left + right + 1;
 }
 int count = 0;
-int GetNodeCount2(BTNode* pRoot)//»ñÈ¡¶ş²æÊ÷ÖĞ½ÚµãµÄ¸öÊı·½·¨2
+int GetNodeCount2(BTNode* pRoot)//è·å–äºŒå‰æ ‘ä¸­èŠ‚ç‚¹çš„ä¸ªæ•°æ–¹æ³•2
 {
 	if (pRoot == 0)
 		return 0;
@@ -179,7 +179,7 @@ int _Max(int a, int b)
 {
 	return a >= b ? a : b;
 }
-int Height(BTNode* pRoot)// Çó¶ş²æÊ÷µÄ¸ß¶È
+int Height(BTNode* pRoot)// æ±‚äºŒå‰æ ‘çš„é«˜åº¦
 {
 	if (pRoot == NULL)
 		return 0;
@@ -187,7 +187,7 @@ int Height(BTNode* pRoot)// Çó¶ş²æÊ÷µÄ¸ß¶È
 	int right = Height(pRoot->_pRight);
 	return _Max(left, right) + 1;
 }
-int GetLeafNodeCount(BTNode* pRoot)// »ñÈ¡¶ş²æÊıÖĞÒ¶×Ó½ÚµãµÄ¸öÊı
+int GetLeafNodeCount(BTNode* pRoot)// è·å–äºŒå‰æ•°ä¸­å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°
 {
 	if (pRoot == NULL)
 		return 0;
@@ -198,22 +198,17 @@ int GetLeafNodeCount(BTNode* pRoot)// »ñÈ¡¶ş²æÊıÖĞÒ¶×Ó½ÚµãµÄ¸öÊı
 		return GetLeafNodeCount(pRoot->_pLeft) + GetLeafNodeCount(pRoot->_pRight);
 	}
 }
-bool IsBalanceTree(BTNode* pRoot)// ¼ì²â¶ş²æÊ÷ÊÇ·ñÆ½ºâO(N^2)
+bool isBalanced(TreeNode* root) //O(n^2)
 {
-	if (pRoot == NULL)
-		return true;
-	if (pRoot->_pLeft == false)
-		return false;
-	if (pRoot->_pRight == false)
-		return true;
-	int left = Height(pRoot->_pLeft);
-	int right = Height(pRoot->_pRight);
-	int diff = left - right;
-	if (diff > 1 || diff < -1)
-		return false;
-	return true;
+        if(root==NULL)
+            return true;
+        int h1=height(root->left);
+        int h2=height(root->right);
+        int d=abs(h1-h2);
+       return (d<=1)&&(isBalanced(root->left))&&(isBalanced(root->right));
 }
-bool IsBalanceTree_P(BTNode* pRoot, int* height)// ¼ì²â¶ş²æÊ÷ÊÇ·ñÆ½ºâO(N)
+    
+bool IsBalanceTree_P(BTNode* pRoot, int* height)// æ£€æµ‹äºŒå‰æ ‘æ˜¯å¦å¹³è¡¡O(N)
 {
 	int IsLbalance = 0;
 	int IsRbalance = 0;
@@ -231,7 +226,7 @@ bool IsBalanceTree_P(BTNode* pRoot, int* height)// ¼ì²â¶ş²æÊ÷ÊÇ·ñÆ½ºâO(N)
 	return false;
 
 }
-int GetKLevelNodeCount(BTNode* pRoot, int K)// »ñÈ¡¶ş²æÊ÷µÚK²ã½ÚµãµÄ¸öÊı 
+int GetKLevelNodeCount(BTNode* pRoot, int K)// è·å–äºŒå‰æ ‘ç¬¬Kå±‚èŠ‚ç‚¹çš„ä¸ªæ•° 
 {
 	assert(K >= 1);
 	if (pRoot == NULL)
@@ -243,7 +238,7 @@ int GetKLevelNodeCount(BTNode* pRoot, int K)// »ñÈ¡¶ş²æÊ÷µÚK²ã½ÚµãµÄ¸öÊı
 		return GetKLevelNodeCount(pRoot->_pLeft, K - 1) + GetKLevelNodeCount(pRoot->_pRight, K - 1);
 	}
 }
-BTNode* find(BTNode* pRoot, char v)//²éÕÒÖµÎªvµÄ½áµã£¬·µ»Ø½ÚµãµØÖ·
+BTNode* find(BTNode* pRoot, char v)//æŸ¥æ‰¾å€¼ä¸ºvçš„ç»“ç‚¹ï¼Œè¿”å›èŠ‚ç‚¹åœ°å€
 {
 	if (pRoot == NULL)
 		return NULL;
@@ -258,7 +253,7 @@ BTNode* find(BTNode* pRoot, char v)//²éÕÒÖµÎªvµÄ½áµã£¬·µ»Ø½ÚµãµØÖ·
 	}
 }
 
-BTNode* GetNodeParent(BTNode* pRoot, BTNode* pNode)// »ñÈ¡¶ş²æÊ÷ÖĞÄ³¸ö½ÚµãµÄË«Ç×½Úµã
+BTNode* GetNodeParent(BTNode* pRoot, BTNode* pNode)// è·å–äºŒå‰æ ‘ä¸­æŸä¸ªèŠ‚ç‚¹çš„åŒäº²èŠ‚ç‚¹
 {
 	BTNode* pParent = NULL;
 	if (pRoot == NULL || pNode == NULL)
@@ -272,7 +267,7 @@ BTNode* GetNodeParent(BTNode* pRoot, BTNode* pNode)// »ñÈ¡¶ş²æÊ÷ÖĞÄ³¸ö½ÚµãµÄË«Ç×
 		return pParent;
 	return GetNodeParent(pRoot->_pRight, pNode);
 }
-bool Mirror(BTNode* s, BTNode* t)// ÅĞ¶Ï¶ş²æÊ÷µÄ¾µÏñ 
+bool Mirror(BTNode* s, BTNode* t)// åˆ¤æ–­äºŒå‰æ ‘çš„é•œåƒ 
 {
 	if (s == NULL&&t == NULL)
 		return true;
@@ -280,7 +275,7 @@ bool Mirror(BTNode* s, BTNode* t)// ÅĞ¶Ï¶ş²æÊ÷µÄ¾µÏñ
 		return false;
 	return s->_data == t->_data && Mirror(s->_pLeft, t->_pRight) && Mirror(s->_pRight, t->_pLeft);
 }
-bool isCompleteTree(BTNode* root)//ÅĞ¶ÏÍêÈ«¶ş²æÊ÷
+bool isCompleteTree(BTNode* root)//åˆ¤æ–­å®Œå…¨äºŒå‰æ ‘
 {
 	if (root == NULL)
 		return true;
@@ -311,72 +306,72 @@ void test()
 	int height = 0;
 	char* str = "ABD##E#H##CF##G##";
 	a = CreateBinTree(str, strlen(str));
-	printf("´´½¨¶ş²æÊ÷³É¹¦!\n");
+	printf("åˆ›å»ºäºŒå‰æ ‘æˆåŠŸ!\n");
 	BTNode* NewNode = CopyBinTree(a);
-	printf("¿½±´³É¹¦!\n");
-	printf("¶ş²æÊ÷aµÄÏÈĞòÅÅÁĞÎª:");
+	printf("æ‹·è´æˆåŠŸ!\n");
+	printf("äºŒå‰æ ‘açš„å…ˆåºæ’åˆ—ä¸º:");
 	PreOrder(a);
 	printf("\n");
-	printf("¿½±´µÄ¶ş²æÊ÷µÄÏÈĞòÅÅÁĞÎª:");
+	printf("æ‹·è´çš„äºŒå‰æ ‘çš„å…ˆåºæ’åˆ—ä¸º:");
 	PreOrder(NewNode);
 	printf("\n");
-	printf("¶ş²æÊ÷aÖĞĞòÅÅÁĞÎª:");
+	printf("äºŒå‰æ ‘aä¸­åºæ’åˆ—ä¸º:");
 	InOrder(a);
 	printf("\n");
-	printf("¿½±´µÄ¶ş²æÊ÷µÄÖĞĞòÅÅÁĞÎª:");
+	printf("æ‹·è´çš„äºŒå‰æ ‘çš„ä¸­åºæ’åˆ—ä¸º:");
 	InOrder(NewNode);
 	printf("\n");
-	printf("¶ş²æÊ÷aºóĞòÅÅÁĞÎª:");
+	printf("äºŒå‰æ ‘aååºæ’åˆ—ä¸º:");
 	PostOrder(a);
 	printf("\n");
-	printf("¿½±´µÄ¶ş²æÊ÷µÄºóĞòÅÅÁĞÎª:");
+	printf("æ‹·è´çš„äºŒå‰æ ‘çš„ååºæ’åˆ—ä¸º:");
 	PostOrder(NewNode);
 	printf("\n");
-	printf("Ç°Ğò±éÀú·Çµİ¹é:");
+	printf("å‰åºéå†éé€’å½’:");
 	PreOrderNor(a);
 	printf("\n");
-	printf("ÖĞĞò±éÀú·Çµİ¹é:");
+	printf("ä¸­åºéå†éé€’å½’:");
 	InOrderNor(a);
 	printf("\n");
-	printf("ºóĞò±éÀú·Çµİ¹é:");
+	printf("ååºéå†éé€’å½’:");
 	PostOrderNor(a);
 	printf("\n");
-	printf("²ãĞò±éÀú:");
+	printf("å±‚åºéå†:");
 	LevelOrder(a);
 	printf("\n");
-	ret = GetNodeCount1(a);//·½·¨1
-	printf("½áµã¸öÊıÎª:%d\n", ret);
-	ret = GetNodeCount2(a);//·½·¨2
-	printf("½áµã¸öÊıÎª:%d\n", ret);
+	ret = GetNodeCount1(a);//æ–¹æ³•1
+	printf("ç»“ç‚¹ä¸ªæ•°ä¸º:%d\n", ret);
+	ret = GetNodeCount2(a);//æ–¹æ³•2
+	printf("ç»“ç‚¹ä¸ªæ•°ä¸º:%d\n", ret);
 	ret = Height(a);
-	printf("¶ş²æÊ÷¸ß¶ÈÎª:%d\n", ret);
+	printf("äºŒå‰æ ‘é«˜åº¦ä¸º:%d\n", ret);
 	ret = GetLeafNodeCount(a);
-	printf("¶ş²æÊ÷Ò¶×Ó½áµã¸öÊıÎª;%d\n", ret);
+	printf("äºŒå‰æ ‘å¶å­ç»“ç‚¹ä¸ªæ•°ä¸º;%d\n", ret);
 	bool result = IsBalanceTree(a);
 	if (result == true)
-		printf("ÊÇÆ½ºâ¶ş²æÊ÷(·½·¨1)!\n");
+		printf("æ˜¯å¹³è¡¡äºŒå‰æ ‘(æ–¹æ³•1)!\n");
 	if (result == false)
-		printf("²»ÊÇÆ½ºâ¶ş²æÊ÷(·½·¨1)!\n");
+		printf("ä¸æ˜¯å¹³è¡¡äºŒå‰æ ‘(æ–¹æ³•1)!\n");
 	result = IsBalanceTree_P(a, &height);
 	if (result == true)
-		printf("ÊÇÆ½ºâ¶ş²æÊ÷(·½·¨2)!\n");
+		printf("æ˜¯å¹³è¡¡äºŒå‰æ ‘(æ–¹æ³•2)!\n");
 	if (result == false)
-		printf("²»ÊÇÆ½ºâ¶ş²æÊ÷(·½·¨2)!\n");
+		printf("ä¸æ˜¯å¹³è¡¡äºŒå‰æ ‘(æ–¹æ³•2)!\n");
 	ret = GetKLevelNodeCount(a, 3);
-	printf("»ñÈ¡µÚÈı²ãµÄ½áµã¸öÊıÎª:%d\n", ret);
+	printf("è·å–ç¬¬ä¸‰å±‚çš„ç»“ç‚¹ä¸ªæ•°ä¸º:%d\n", ret);
 	BTNode* pParent = GetNodeParent(a, find(a, 'D'));
 	pParent = GetNodeParent(a, find(a, 'F'));
 	BTNode* t = NULL;
-	char* _str = "ACG##F##BEH###D##";//×ÔĞĞ¹¹½¨Ò»¸öÓëaÎª¾µÏñµÄÊ÷
+	char* _str = "ACG##F##BEH###D##";//è‡ªè¡Œæ„å»ºä¸€ä¸ªä¸aä¸ºé•œåƒçš„æ ‘
 	t = CreateBinTree(_str, strlen(_str));
 	result = Mirror(a, t);
 	if (result == true)
-		printf("aºÍt»¥Îª¾µÏñ!\n");
+		printf("aå’Œtäº’ä¸ºé•œåƒ!\n");
 	if (result == false)
-		printf("aºÍt²»»¥Îª¾µÏñ!\n");
+		printf("aå’Œtä¸äº’ä¸ºé•œåƒ!\n");
 	result=isCompleteTree(a);
 	if (result == true)
-		printf("ÊÇÍêÈ«¶ş²æÊ÷!\n");
+		printf("æ˜¯å®Œå…¨äºŒå‰æ ‘!\n");
 	if (result == false)
-		printf("²»ÊÇÍêÈ«¶ş²æÊ÷!\n");
+		printf("ä¸æ˜¯å®Œå…¨äºŒå‰æ ‘!\n");
 }
