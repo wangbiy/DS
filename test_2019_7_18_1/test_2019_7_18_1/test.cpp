@@ -7,29 +7,22 @@ typedef struct TreeNode
 	struct TreeNode* right;
 	int val;
 }Node;
-////�������������
-//bool exists(Node* root, Node* t)
-//{
-//	if (root == NULL)
-//		return false;
-//	if (root == t)
-//		return true;
-//	if (exists(root->left, t))
-//		return true;
-//	return exists(root->right, t);	
-//}
-//Node* lowestCommonAncestor(Node* root, Node* p, Node* q)
-//{
-//	if (root == p || q == root)
-//		return root;
-//	bool pleft = exists(root->left, p);
-//	bool qleft = exists(root->left, q);
-//	if (pleft&&qleft)
-//		return lowestCommonAncestor(root->left, p, q);
-//	if (!pleft&&!qleft)
-//		return lowestCommonAncestor(root->right, p, q);
-//	return root;
-//}
+////找最近公共祖先
+Node* lowestCommonAncestor(Node* root, Node* p,Node* q)
+{
+   if (root == p || root == q || !root)//p或者q为根结点，那么最近公共祖先为根结点
+		return root;
+
+	Node* left = lowestCommonAncestor(root->left, p, q);
+	Node* right = lowestCommonAncestor(root->right, p, q);
+	if (!left&&!right)//左右子树均没有p或q
+		return NULL;
+	else if (left&&!right)//左子树可以找到但右子树找不到
+		return left;
+	else if (right&&!left)//右子树上能找到，但是左子树上找不到
+		return right;
+	return root;//左右子树都可以找到，即p和q分居根结点两侧
+}
 Node* createTree(char data)
 {
 	Node* root = NULL;
@@ -61,7 +54,7 @@ Node* test()
 	f->right = i;
 	return a;
 }
-//����������ת��Ϊ����˫������
+//二叉搜索树转换为排序双向链表
 Node* prev = NULL;
 void toDList(Node* node)
 {
